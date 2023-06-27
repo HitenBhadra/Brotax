@@ -73,8 +73,8 @@ def calculate_new_tax(income, HRA, age, DA, metro):
 new_tax=calculate_new_tax(income, HRA, age, DA, metro)
 
 # Display results
-# st.write("Total tax old regime:", old_tax,fontsize=2rem)
-st.write("Total tax new regime:",new_tax,fontsize=2rem)
+# st.write("Total tax old regime:", old_tax)
+st.write("Total tax new regime:",new_tax)
 
 #docs
 st.title('What is Income Tax Calculator')
