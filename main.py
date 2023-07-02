@@ -28,49 +28,52 @@ HRA=st.number_input('HRA')
 metro=st.checkbox('Do you live in metro city')
 
 #calculation new tax
-def calculate_new_tax(income, HRA, age, DA, metro):
-  """Calculates the new tax for India, given the income, HRA, age, DA, and metro.
+
+def newtaxcalc(age, income):
+  """Calculates income tax for the new tax regime.
 
   Args:
-    income: The annual income.
-    HRA: The house rent allowance.
     age: The age of the taxpayer.
-    DA: The deduction amount.
-    metro: Whether the taxpayer lives in a metro city.
+    income: The income of the taxpayer.
 
   Returns:
-    The new tax amount.
+    A tuple of (total taxable income after deduction, cess, tax, total tax).
   """
+  tax = 0
+  income -= 50000
 
-  # Initialize the tax slabs.
-  tax_slabs = [
-      (250000, 0),
-      (500000, 0.05),
-      (750000, 0.10 + 12500),
-      (1000000, 0.15 + 37500),
-      (1250000, 0.20 + 75000),
-      (1500000, 0.25 + 125000),
-  ]
+  if income <= 300000:
+    tax = 0
+  elif income <= 600000:
+    tax = (income - 300000) * 0.05
+  elif income <= 900000:
+    tax = 15000 + (income - 600000) * 0.1
+  elif income <= 1200000:
+    tax = 45000 + (income - 900000) * 0.15
+  elif income <= 1500000:
+    tax = 90000 + (income - 1200000) * 0.20
+  else:
+    tax = 150000 + (income - 1500000) * 0.3
 
-  # Calculate the taxable income.
-  taxable_income = income - HRA - DA
+  section = []
+  if income <= 700000:
+    tax -= 25000
+    section.append('87A')
 
-  # Calculate the new tax.
-  new_tax = 0
-  for slab_start, slab_rate in tax_slabs:
-    if taxable_income <= slab_start:
-      new_tax = taxable_income * slab_rate
-      break
+  if tax < 0:
+    tax = 0
 
-  # Add surcharge if the taxpayer lives in a metro city.
-  if metro:
-    new_tax += 0.02 * new_tax
+  cess = tax * 0.04
+  ttax = tax + cess
 
-  return new_tax
-  
+  return ttax
+
+#calculation of old tax 
+def oldtaxcalc():
+    pass
 
 #compute
-new_tax=calculate_new_tax(income, HRA, age, DA, metro)
+new_tax=newtaxcalc(income, age)
 
 # Display results
 # st.write("Total tax old regime:", old_tax)
