@@ -73,7 +73,7 @@ def oldtaxcalc():
     pass
 
 #compute
-new_tax=newtaxcalc(income, age)
+new_tax=newtaxcalc(age,income)
 
 # Display results
 # st.write("Total tax old regime:₹", old_tax)
