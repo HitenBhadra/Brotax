@@ -20,7 +20,7 @@ age=st.radio('Age category', ['below 60','60 or above','80 or above'], horizonta
 income=st.number_input('income')
 
 #Deduction
-DA=st.number_input('DA')
+DA=st.number_input('Deduction')
 
 #HRA exemption
 HRA=st.number_input('HRA')
@@ -37,7 +37,7 @@ def newtaxcalc(age, income):
     income: The income of the taxpayer.
 
   Returns:
-    A tuple of (total taxable income after deduction, cess, tax, total tax).
+    total tax
   """
   tax = 0
   income -= 50000
@@ -76,8 +76,8 @@ def oldtaxcalc():
 new_tax=newtaxcalc(income, age)
 
 # Display results
-# st.write("Total tax old regime:", old_tax)
-st.write("Total tax new regime:",new_tax)
+# st.write("Total tax old regime:₹", old_tax)
+st.write("Total tax new regime:₹",new_tax)
 
 st.divider()
 
