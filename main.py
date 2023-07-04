@@ -89,7 +89,7 @@ An Income-tax calculator is an online tool that helps to evaluate taxes based on
 st.divider()
 
 st.subheader('About us')
-st.markdown('''This income tax calculator project was created by Hiten and Devesh, two students in XII-'A' at KV No.1 Manglore Panambur. The project was guided by Sunil sir, a computer science teacher at the school.''')
+st.markdown('''This income tax calculator project was created by Hiten and Devesh, two students in XII-'A' at KV No.1 Manglore Panambur. The project was guided by Sunil sir, computer science teacher at the school.''')
 
 st.subheader('The Goal')
 st.markdown('''The goal of the project was to create a simple and easy-to-use income tax calculator that could be used by anyone. The calculator takes into account the latest Indian income tax slabs and deductions, and it provides a clear and concise output.''')
